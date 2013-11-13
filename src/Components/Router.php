@@ -52,6 +52,7 @@ class Router
 			{
 				$controllerNs = 'Controllers\\'.$controller;
 				$c = new $controllerNs($this->routes[$q]);
+				
 				return $c->$action();
 			}
 		}

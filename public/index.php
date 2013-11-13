@@ -9,7 +9,8 @@ class_alias('Components\\Url', 'Url');
 
 $app = new Components\Application();
 
-$app->router->add('/hello', 'hello');
-$app->router->add('/about', 'hello::about');
+$app->router->add('/', 'home');
+$app->router->add('/about', 'home::about');
+$app->router->add('/picture', 'picture');
 
 return $app->send();
