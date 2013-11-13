@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks -MultiViews -Indexes
+    RewriteEngine on
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+
+	RewriteRule ^(.*)$ public/index.php?$1 [L,QSA]
+</IfModule>
+

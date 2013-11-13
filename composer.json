@@ -1,0 +1,13 @@
+{
+	"name":"Slimest MVC",
+	"author":"ilpaijin",
+	"email":"ilpaijin@gmail.com",
+	"autoload": {
+		"psr-0":{
+			"":"src/"
+		},
+		"classmap": [
+			"app/controllers"
+		]
+	}
+}
