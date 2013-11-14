@@ -10,6 +10,7 @@ namespace Components;
 */
 class Application 
 {	
+	const VERSION = '0.1.0';
 	/**
 	 * [$request description]
 	 * @var [type]
