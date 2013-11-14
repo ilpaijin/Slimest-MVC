@@ -5,7 +5,7 @@ require_once '../vendor/autoload.php';
 define('PUBLIC', __DIR__);
 define('SRC', __DIR__ . '/../src/');
 
-class_alias('Components\\Url', 'Url');
+class_alias('Helper\\Url', 'Url');
 
 $app = new Components\Application();
 
