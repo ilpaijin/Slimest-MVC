@@ -45,14 +45,14 @@ class View
 	 */
 	public function render($view = null)
 	{
+		extract($this->data);
+		
 		ob_start();
 
 		if(!is_null($this->route))
 		{
 			list($view, $file) = explode('::', $this->route);
 		}
-
-		extract($this->data);
 
 		if($view && isset($file))
 		{
