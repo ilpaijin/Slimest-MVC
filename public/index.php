@@ -1,11 +1,8 @@
 <?php 
 
-require_once '../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
-define('PUBLIC', __DIR__);
-define('SRC', __DIR__ . '/../src/');
-
-class_alias('Helper\\Url', 'Url');
+require_once __DIR__.'/../src/Config/bootstrap.php';
 
 $app = new Components\Application();
 

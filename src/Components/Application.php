@@ -2,6 +2,9 @@
 
 namespace Components;
 
+use Components\Request;
+use Components\Router;
+
 /**
 * Application class
 *
@@ -15,7 +18,7 @@ class Application
 	 * [$request description]
 	 * @var [type]
 	 */
-	private $request;
+	public $request;
 
 	/**
 	 * [$router description]
@@ -29,17 +32,8 @@ class Application
 	 */
 	public function __construct(Request $request = null)
 	{
-		$this->request = $request?: static::onRequest();
-		$this->router = new Router();
-	}
-
-	/**
-	 * [onRequest description]
-	 * @return [type] [description]
-	 */
-	public static function onRequest()
-	{
-		return $_SERVER;
+		$this->request = Request::createFromGlobals();
+		$this->router = new Router($this);
 	}
 
 	/**

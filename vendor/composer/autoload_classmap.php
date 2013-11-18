@@ -8,4 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Controllers\\Home' => $baseDir . '/app/controllers/home.php',
     'Controllers\\Picture' => $baseDir . '/app/controllers/picture.php',
+    'Models\\Users' => $baseDir . '/app/models/Users.php',
+    'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
 );

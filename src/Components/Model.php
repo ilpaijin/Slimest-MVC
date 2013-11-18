@@ -2,6 +2,8 @@
 
 namespace Components;
 
+use Components\Database\Db;
+
 /**
 * Model class
 *
@@ -10,27 +12,15 @@ namespace Components;
 */
 class Model 
 {
-	/**
-	 * [$data description]
-	 * @var [type]
-	 */
-	protected $data;
+	protected $driver;
 
-	/**
-	 * [__construct description]
-	 */
-	public function __construct()
+	public function __construct($driver = null)
 	{
-		$this->data = 'dati model';
-		return $this->data;
+		$this->driver = $this->setDriver($driver);
 	}
 
-	/**
-	 * [getData description]
-	 * @return [type] [description]
-	 */
-	public function getData()
+	public function setDriver($driver)
 	{
-		return $this->data;
+		return $driver ?: new Db();
 	}
 }

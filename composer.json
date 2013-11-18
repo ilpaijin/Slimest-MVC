@@ -7,7 +7,11 @@
 			"":"src/"
 		},
 		"classmap": [
-			"app/controllers"
+			"app/controllers",
+			"app/models"
 		]
+	},
+	"require":{
+		"symfony/http-foundation": "v2.3.7"
 	}
 }
