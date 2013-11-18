@@ -10,4 +10,5 @@ namespace Components;
 */
 class Request extends \Symfony\Component\HttpFoundation\Request
 {
+	//A better way of this crap is needed
 }	
