@@ -11,12 +11,6 @@ namespace Components;
 class Router 
 {	
 	/**
-	 * [$app description]
-	 * @var [type]
-	 */
-	private $app;
-
-	/**
 	 * [$routes description]
 	 * @var [type]
 	 */
@@ -26,14 +20,13 @@ class Router
 	 * [$currentRoute description]
 	 * @var [type]
 	 */
-	protected $currentRoute;
+	public $currentRoute;
 
 	/**
 	 * [__construct description]
 	 */
-	public function __construct($app)
+	public function __construct()
 	{
-		$this->app = $app;
 	}
 
 	/**
@@ -47,33 +40,20 @@ class Router
 	}
 
 	/**
-	 * [getResponse description]
+	 * [prepareRoute description]
 	 * @param  [type] $request [description]
 	 * @return [type]          [description]
 	 */
-	public function getResponse($request)
+	public function prepareRoute($request)
 	{
-		$querystring = '/'. ltrim($this->app->request->getQueryString());
+		$querystring = '/'. $request->getQueryString();
 
 		if($this->hasRoute($querystring))
 		{
-			$this->currentRoute = $this->prepare($querystring);
-
-			list($controller, $action) = explode('::', $this->currentRoute);
-
-			$controller = ucfirst($controller);
-
-			if(class_exists('Controllers\\'.$controller))
-			{
-				$controllerNs = 'Controllers\\'.$controller;
-				$c = new $controllerNs($this->currentRoute);
-				
-				return $c->$action();
-			}
+			return $this->currentRoute = $this->interpret($querystring);
 		}
 
-		$c = new Controller(null);
-		return $c->error();
+		return false;
 	}
 
 	/**
@@ -90,9 +70,14 @@ class Router
 	 * [setAction description]
 	 * @param [type] $querystring [description]
 	 */
-	private function prepare($querystring)
+	private function interpret($querystring)
 	{
+
 		$act = $this->routes[$querystring]->getAction();
+		if (is_callable($act))
+		{
+			return $act($querystring);
+		}
 		return false === strpos($act, '::') ? $act . '::index' : $act;
 	}
 }

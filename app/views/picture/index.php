@@ -1,10 +1,10 @@
 <section>
-	<h4>Hi <?php echo $name; ?></h4>
+	<h4>Hi </h4>
 	<div class="slideshow-wrapper">
 		<div class="preloader"></div>
 		<ul data-orbit>
 			<li>
-				<img src="https://plus.google.com/s2/photos/profile/109854632648902617940" alt="<?php echo $dog; ?>" />
+				<img src="https://plus.google.com/s2/photos/profile/109854632648902617940" alt="" />
 				<div class="orbit-caption">Hi Paio! It's me, Baby...</div>
 			</li>
 			<li>

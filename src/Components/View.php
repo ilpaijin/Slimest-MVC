@@ -32,9 +32,8 @@ class View
 	 * [__construct description]
 	 * @param [type] $route [description]
 	 */
-	public function __construct($route)
+	public function __construct()
 	{
-		$this->route = $route;
 		$this->template = 'default';
 	}
 
@@ -43,16 +42,13 @@ class View
 	 * @param  [type] $view [description]
 	 * @return [type]       [description]
 	 */
-	public function render($view = null)
+	public function render($route = null)
 	{
 		extract($this->data);
 		
 		ob_start();
 
-		if(!is_null($this->route))
-		{
-			list($view, $file) = explode('::', $this->route);
-		}
+		list($view, $file) = explode('::', $route);
 
 		if($view && isset($file))
 		{
@@ -62,7 +58,7 @@ class View
 			include __DIR__.'/../../app/views/'.$view.'/index.php';
 		} else 
 		{
-			include __DIR__.'/../../app/views/hello/index.php';
+			include __DIR__.'/../../app/views/error/index.php';
 		}
 
 		$content = ob_get_clean();
@@ -79,11 +75,9 @@ class View
 	 * @param  array  $data [description]
 	 * @return [type]       [description]
 	 */
-	public function with($data = array())
+	public function addData($data = array())
 	{
 		$this->data = array_merge($this->data, $data); 
-
-		return $this;
 	}
 
 	/**

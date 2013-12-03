@@ -8,6 +8,10 @@ $app = new Components\Application();
 
 $app->router->add('/', 'home');
 $app->router->add('/about', 'home::about');
+$app->router->add('/about/{name}', function($name)
+{
+	echo 'ok ' . $name;
+});
 $app->router->add('/picture', 'picture');
 
-return $app->send();
+return $app->run();

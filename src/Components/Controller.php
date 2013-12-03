@@ -12,26 +12,29 @@ namespace Components;
 class Controller 
 {
 	/**
-	 * [$view description]
+	 * [$response description]
 	 * @var [type]
 	 */
-	protected $view;
+	private $response;
 
 	/**
 	 * [__construct description]
 	 * @param [type] $uri [description]
 	 */
-	public function __construct($uri)
+	public function __construct(Response $response)
 	{
-		$this->view = new View($uri);
+		$this->response = $response;
 	}
 
 	/**
-	 * [error description]
-	 * @return [type] [description]
+	 * [with description]
+	 * @param  [type] $data [description]
+	 * @return [type]       [description]
 	 */
-	public function error()
+	public function with($data)
 	{
-		return $this->view->error();
+		$this->response->addData($data);
+
+		return $this;
 	}
 }

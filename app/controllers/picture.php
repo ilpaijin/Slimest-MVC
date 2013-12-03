@@ -16,10 +16,5 @@ class Picture extends \Components\Controller
 	 */
 	public function index()
 	{
-		return $this->view->with(array(
-			'name' => 'ilpaijin',
-			'dog' => 'baby', 
-			))
-			->render();
 	}
 }

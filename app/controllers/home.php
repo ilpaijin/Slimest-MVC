@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-use Models\Users;
-
 /**
 * Home class
 *
@@ -15,10 +13,10 @@ class Home extends \Components\Controller
 	/**
 	 * [__construct description]
 	 */
-	// public function __construct() // <- ioc 
-	// {
-	// 	parent::__construct();
-	// }
+	public function __construct(\Models\Users $users) // <- ioc 
+	{
+		$this->users = $users;
+	}
 
 	/**
 	 * [index description]
@@ -26,7 +24,7 @@ class Home extends \Components\Controller
 	 */
 	public function index()
 	{
-		return $this->view->render();
+
 	}
 
 	/**
@@ -35,10 +33,9 @@ class Home extends \Components\Controller
 	 */
 	public function about()
 	{
-		$users = new Users();
-		$user = $users->get(1);
+		$user = $this->users->get(1);
 
-		return $this->view
+		return $this
 			->with(array('user' => $user))
 			->render();
 	}
